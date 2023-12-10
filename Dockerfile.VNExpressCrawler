@@ -6,12 +6,10 @@ WORKDIR /app
 
 # Copy csproj and restore as distinct layers.
 COPY *.sln .
-COPY src ./src
+COPY src/ArticlesCrawler.VNExpressCrawler/*.csproj ./src/ArticlesCrawler.VNExpressCrawler/
+COPY src/ArticlesCrawler.Core/*.csproj ./src/ArticlesCrawler.Core/
+COPY src/ArticlesCrawler.Infrastructure/*.csproj ./src/ArticlesCrawler.Infrastructure/
 COPY data ./data
-# COPY src/ArticlesCrawler.VNExpressCrawler ./src/ArticlesCrawler.VNExpressCrawler
-# COPY src/ArticlesCrawler.Core ./ArticlesCrawler.Core
-# COPY src/ArticlesCrawler.Infrastructure ./ArticlesCrawler.Infrastructure
-# WORKDIR /app/ArticlesCrawler.VNExpressCrawler
 RUN dotnet restore src/ArticlesCrawler.VNExpressCrawler/ArticlesCrawler.VNExpressCrawler.csproj
 
 # Copy everything else and build.
@@ -21,7 +19,11 @@ RUN dotnet publish -c Release -o out
 # Build runtime image.
 FROM mcr.microsoft.com/dotnet/runtime:6.0
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build-env /app/src/ArticlesCrawler.VNExpressCrawler/out .
+# COPY --from=build-env /app/data ./data
+
+# Set the ASPNETCORE_ENVIRONMENT environment variable.
+ENV ASPNETCORE_ENVIRONMENT=Production
 
 # Run the app when the container launches.
 ENTRYPOINT ["dotnet", "ArticlesCrawler.VNExpressCrawler.dll"]
