@@ -1,3 +1,5 @@
+# For TESTING ONLY
+
 sudo docker image prune
 
 sudo docker stop running-vnexpress-crawler

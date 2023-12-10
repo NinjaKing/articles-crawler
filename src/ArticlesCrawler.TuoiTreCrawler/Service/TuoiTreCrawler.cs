@@ -257,8 +257,9 @@ namespace ArticlesCrawler.TuoiTreCrawler.Service
                         i++;
                     }
                     
-                    // Close the browser
+                    // Close the browser, try to release memory
                     driver.Quit();
+                    driver.Dispose();
                 }
             }
             catch (WebDriverException ex)
@@ -376,8 +377,9 @@ namespace ArticlesCrawler.TuoiTreCrawler.Service
                                 .Sum();
                     // _logger.LogInformation($"**** Published: {article.PublishedTime}, Total comments: {article.TotalComments}, Total likes: {article.TotalLikes}");
 
-                    // Close the browser
+                    // Close the browser, try to release memory
                     driver.Quit();
+                    driver.Dispose();
                 }
             }
             catch (WebDriverException ex)

@@ -240,8 +240,9 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                                 .Sum();
                     }
                     
-                    // Close the browser
+                    // Close the browser, try to release memory
                     driver.Quit();
+                    driver.Dispose();
                 }
             }
             catch (WebDriverException ex)
@@ -258,6 +259,10 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
             catch (Exception ex)
             {
                 _logger.LogInformation("Exception: " + ex.ToString());
+            }
+            finally
+            {
+                chromeOptions = null;
             }
         }
 
