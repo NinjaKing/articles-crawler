@@ -38,7 +38,6 @@ COPY --from=build-env /app/data ./data
 COPY --from=build-env /app/drivers/chromedriver .
 
 # Give execute permissions to the chromedriver executable.
-RUN chmod +x ./chromedriver
 RUN chmod +x .
 
 # Set the ASPNETCORE_ENVIRONMENT environment variable.

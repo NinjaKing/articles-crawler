@@ -41,6 +41,8 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
             chromeOptions.AddArgument("--silent");
             chromeOptions.AddArgument("--log-level=3");
             chromeOptions.AddArgument("--no-user-data-dir");
+            chromeOptions.AddArgument("--no-sandbox"); // Needed when running ChromeDriver in a Docker container.
+            chromeOptions.AddArgument("--disable-dev-shm-usage"); // Needed when running ChromeDriver in a Docker container.
             return chromeOptions;
         }
 
