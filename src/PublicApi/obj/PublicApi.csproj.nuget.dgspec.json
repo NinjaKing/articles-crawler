@@ -1,0 +1,203 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\PublicApi\\PublicApi.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj",
+        "projectName": "ArticlesCrawler.Core",
+        "projectPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj",
+        "packagesPath": "C:\\Users\\trong\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\trong\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Infrastructure\\ArticlesCrawler.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Infrastructure\\ArticlesCrawler.Infrastructure.csproj",
+        "projectName": "ArticlesCrawler.Infrastructure",
+        "projectPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Infrastructure\\ArticlesCrawler.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\trong\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\trong\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj": {
+                "projectPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\PublicApi\\PublicApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\PublicApi\\PublicApi.csproj",
+        "projectName": "PublicApi",
+        "projectPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\PublicApi\\PublicApi.csproj",
+        "packagesPath": "C:\\Users\\trong\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\PublicApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\trong\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj": {
+                "projectPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj"
+              },
+              "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Infrastructure\\ArticlesCrawler.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Infrastructure\\ArticlesCrawler.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

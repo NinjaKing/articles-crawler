@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Articles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="main-header">Top <span id="article-count"></span> Articles</span></h1>
+        <h2>Ranked by total number of likes in comment section</h2>
+        <!-- <div id="article-source"></div> -->
+        <div id="date-range"></div>
+        <div id="tabs">
+            <button id="vnexpress-tab-btn" class="tab-btn" onclick="showTab('vnexpress')">VNExpress</button>
+            <button id="tuoitre-tab-btn" class="tab-btn" onclick="showTab('tuoitre')">Tuoi Tre</button>
+        </div>
+    </header>
+    
+    <div id="articles-container"></div>
+    <!-- <div id="webA-tab" class="tab-content">
+        
+    </div>
+    <div id="webB-tab" class="tab-content"></div> -->
+
+    <script src="app.js"></script>
+</body>
+</html>

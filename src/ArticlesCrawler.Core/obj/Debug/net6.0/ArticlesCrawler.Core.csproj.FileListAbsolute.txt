@@ -1,0 +1,12 @@
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\bin\Debug\net6.0\ArticlesCrawler.Core.deps.json
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\bin\Debug\net6.0\ArticlesCrawler.Core.dll
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\bin\Debug\net6.0\ArticlesCrawler.Core.pdb
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ArticlesCrawler.Core.csproj.AssemblyReference.cache
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ArticlesCrawler.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ArticlesCrawler.Core.AssemblyInfoInputs.cache
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ArticlesCrawler.Core.AssemblyInfo.cs
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ArticlesCrawler.Core.csproj.CoreCompileInputs.cache
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ArticlesCrawler.Core.dll
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\refint\ArticlesCrawler.Core.dll
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ArticlesCrawler.Core.pdb
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Core\obj\Debug\net6.0\ref\ArticlesCrawler.Core.dll

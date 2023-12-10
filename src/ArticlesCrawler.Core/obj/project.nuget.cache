@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6mPg1Y7QOKLaXlIHKCDDN2uFaHcnd0WmgrBtusqajxKQXyQsmuffIIsp92rP84SZ98eVqCqm3+Erp0kPmq9CkQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\trong\\OneDrive\\Projects\\ArticlesCrawler\\src\\ArticlesCrawler.Core\\ArticlesCrawler.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\trong\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\trong\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

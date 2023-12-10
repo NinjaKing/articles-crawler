@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  vnexpresscrawler:
+    image: vnexpresscrawler:latest
+    build:
+      context: ./src/ArticlesCrawler.VNExpressCrawler
+      dockerfile: Dockerfile

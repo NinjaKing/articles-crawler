@@ -1,0 +1,15 @@
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\bin\Debug\net6.0\ArticlesCrawler.Infrastructure.deps.json
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\bin\Debug\net6.0\ArticlesCrawler.Infrastructure.dll
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\bin\Debug\net6.0\ArticlesCrawler.Infrastructure.pdb
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\bin\Debug\net6.0\ArticlesCrawler.Core.dll
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\bin\Debug\net6.0\ArticlesCrawler.Core.pdb
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.AssemblyInfo.cs
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.csproj.CopyComplete
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.dll
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\refint\ArticlesCrawler.Infrastructure.dll
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ArticlesCrawler.Infrastructure.pdb
+C:\Users\trong\OneDrive\Projects\ArticlesCrawler\src\ArticlesCrawler.Infrastructure\obj\Debug\net6.0\ref\ArticlesCrawler.Infrastructure.dll
