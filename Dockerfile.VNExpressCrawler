@@ -22,6 +22,7 @@ FROM mcr.microsoft.com/dotnet/runtime:6.0
 WORKDIR /app
 COPY --from=build-env /app/src/ArticlesCrawler.VNExpressCrawler/out .
 COPY --from=build-env /app/src/ArticlesCrawler.VNExpressCrawler/appsettings*.json ./
+COPY --from=build-env /app/data ./data
 
 # Set the ASPNETCORE_ENVIRONMENT environment variable.
 ENV ASPNETCORE_ENVIRONMENT=Production
