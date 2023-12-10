@@ -5,11 +5,13 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers.
-COPY *.csproj ./
+COPY ../ArticlesCrawler.VNExpressCrawler ./ArticlesCrawler.VNExpressCrawler
+COPY ../ArticlesCrawler.Core ./ArticlesCrawler.Core
+COPY ../ArticlesCrawler.Infrastructure ./ArticlesCrawler.Infrastructure
+WORKDIR /app/ArticlesCrawler.VNExpressCrawler
 RUN dotnet restore
 
 # Copy everything else and build.
-COPY . ./
 RUN dotnet publish -c Release -o out
 
 # Build runtime image.
