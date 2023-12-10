@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticlesCrawler.Infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticlesCrawler.Core", "src\ArticlesCrawler.Core\ArticlesCrawler.Core.csproj", "{3A9BACBE-AE23-423F-8544-B71141829498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticlesCrawler.Crawler", "src\ArticlesCrawler.Crawler\ArticlesCrawler.Crawler.csproj", "{2E3BF6D9-02FF-4F6B-8B84-05BDE11E00C8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicApi", "src\PublicApi\PublicApi.csproj", "{44A217AD-2C8F-4237-92C8-E94E23EC4850}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticlesCrawler.VNExpressCrawler", "src\ArticlesCrawler.VNExpressCrawler\ArticlesCrawler.VNExpressCrawler.csproj", "{089D16FF-BAF8-4E8B-ADD5-A4B5D464DEE3}"

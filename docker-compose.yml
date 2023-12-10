@@ -19,7 +19,7 @@ services:
     volumes:
       - db-data:/app/data
     ports:
-      - "5001:5001"
+      - "5000:5000"
     logging:
       driver: json-file
 volumes:
