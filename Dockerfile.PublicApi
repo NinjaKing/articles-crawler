@@ -17,4 +17,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build-env /app/src/PublicApi/out .
 COPY --from=build-env /app/data ./data
-ENTRYPOINT ["dotnet", "PublicApi.dll", "--urls", "http://127.0.0.1:5000", "--environment=Production"]
+ENTRYPOINT ["dotnet", "PublicApi.dll", "--environment=Production"]
