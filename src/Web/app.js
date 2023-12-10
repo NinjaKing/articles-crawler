@@ -13,7 +13,7 @@ function showTab(tabId) {
 
 function fetchAndDisplayArticles(tabId) {
     // Replace 'your-api-endpoint' with the actual endpoint of your API
-    const apiUrl = `http://localhost:5000/Articles/top-likes?source=${tabId}`;
+    const apiUrl = `http://ec2-52-45-216-219.compute-1.amazonaws.com:5000/Articles/top-likes?source=${tabId}`;
 
     fetch(apiUrl, {
             // mode: 'no-cors',
