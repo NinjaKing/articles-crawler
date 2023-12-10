@@ -36,19 +36,8 @@ class Program
         }
 
         // Run the crawlers
-        // var vnexpressCrawler = serviceProvider.GetRequiredService<MainCrawler>();
-        // await vnexpressCrawler.Run();
-
-        // Print the relative path of the current folder and all the subfolders
-        var rootFolder = Directory.GetCurrentDirectory();
-        Console.WriteLine($"Root folder: {rootFolder}");
-        var subfolders = Directory.GetDirectories(rootFolder, "*", SearchOption.AllDirectories);
-        foreach (var subfolder in subfolders)
-        {
-            Console.WriteLine($"Subfolder: {subfolder}");
-        }
-
-        Console.WriteLine($"Database file: {configuration.GetConnectionString("DefaultConnection")}");
+        var vnexpressCrawler = serviceProvider.GetRequiredService<MainCrawler>();
+        await vnexpressCrawler.Run();
 
         // ArticleData article = new ArticleData
         // {
