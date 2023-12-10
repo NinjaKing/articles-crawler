@@ -19,6 +19,6 @@ services:
     volumes:
       - db-data:/app/data
     ports:
-      - "8000:80"
+      - "5001:5001"
 volumes:
   db-data:

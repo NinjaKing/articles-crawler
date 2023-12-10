@@ -135,8 +135,8 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                     HtmlDocument doc = web.Load(formattedUrl);
 
                     // Get the list of articles
-                    // Selects all 'article' elements with an 'a' element from the HTML document
-                    var articleNodes = doc.DocumentNode.SelectNodes("//article//a");
+                    // Selects all 'article' elements with a 'h3' element with a class of 'title-news' that are descendants of a 'article' element from the HTML document
+                    var articleNodes = doc.DocumentNode.SelectNodes("//article//h3[@class='title-news']//a");
                     if (articleNodes == null || articleNodes.Count == 0)
                     {
                         // No more articles to process
@@ -228,7 +228,7 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                                     Likes = int.TryParse(likesNode.InnerText.Trim(), out int likes) ? likes : 0
                                 };
                                 comments.Add(comment);
-                                _logger.LogInformation($"Content: {comment.Content}, Likes: {comment.Likes}");
+                                // _logger.LogInformation($"Content: {comment.Content}, Likes: {comment.Likes}");
                             }
                         }
 
@@ -287,6 +287,7 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                 await GetArticleMetadata(article);
                 // Save the article
                 await SaveArticle(article);
+                _logger.LogInformation($">>Update new: Href: {article.Title}, PublishedTime: {article.PublishedTime}, TotalComments: {article.TotalComments}, TotalLikes: {article.TotalLikes}");
             });
         }
 

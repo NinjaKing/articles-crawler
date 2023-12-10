@@ -1,7 +1,5 @@
 # For TESTING ONLY
 
-sudo docker image prune
-
 sudo docker stop running-vnexpress-crawler
 sudo docker rm running-vnexpress-crawler
 sudo docker rmi vnexpress-crawler
@@ -14,4 +12,11 @@ sudo docker rmi tuoitre-crawler
 sudo docker build -t tuoitre-crawler -f Dockerfile.TuoiTreCrawler .
 sudo docker run -d --name running-tuoitre-crawler -v $(pwd)/data:/app/data tuoitre-crawler
 
+sudo docker stop running-article-api
+sudo docker rm running-article-api
+sudo docker rmi article-api
+sudo docker build -t article-api -f Dockerfile.Api .
+docker run -p 5001:5001 --name running-article-api -v $(pwd)/data:/app/data article-api
+
+sudo docker image prune
 # sudo docker logs -f running-tuoitre-crawler
