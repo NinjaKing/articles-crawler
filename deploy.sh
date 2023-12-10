@@ -15,7 +15,7 @@ sudo docker run -d --name running-tuoitre-crawler -v $(pwd)/data:/app/data tuoit
 sudo docker stop running-article-api
 sudo docker rm running-article-api
 sudo docker rmi article-api
-sudo docker build -t article-api -f Dockerfile.Api Dockerfile.PublicApi .
+sudo docker build -t article-api -f Dockerfile.PublicApi .
 docker run -p 5001:5001 --name running-article-api -v $(pwd)/data:/app/data article-api
 
 sudo docker image prune
