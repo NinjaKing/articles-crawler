@@ -16,7 +16,7 @@ sudo docker stop running-article-api
 sudo docker rm running-article-api
 sudo docker rmi article-api
 sudo docker build -t article-api -f Dockerfile.PublicApi .
-docker run -p 5001:5001 --name running-article-api -v $(pwd)/data:/app/data article-api
+docker run -d -p 5001:5001 --name running-article-api -v $(pwd)/data:/app/data article-api
 
 sudo docker image prune
 # sudo docker logs -f running-tuoitre-crawler
