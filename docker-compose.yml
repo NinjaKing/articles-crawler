@@ -6,6 +6,12 @@ services:
       dockerfile: Dockerfile.VNExpressCrawler
     volumes:
       - db-data:/app/data
+  tuoitre-crawler:
+    build: 
+      context: .
+      dockerfile: Dockerfile.TuoiTreCrawler
+    volumes:
+      - db-data:/app/data
   api:
     build: 
       context: .

@@ -38,13 +38,6 @@ class Program
         // Run the crawlers
         var vnexpressCrawler = serviceProvider.GetRequiredService<MainCrawler>();
         await vnexpressCrawler.Run();
-
-        // ArticleData article = new ArticleData
-        // {
-        //     Href = "https://vnexpress.net/di-doi-hon-1-000-ho-de-cai-tao-bo-bac-kenh-doi-o-tp-hcm-4685665.html"
-        // };
-        // await vnexpressCrawler.GetArticleMetadata(article);
-        // Console.WriteLine(article.PublishedTime);
     }
 
     private static void ConfigureServices(IServiceCollection services)

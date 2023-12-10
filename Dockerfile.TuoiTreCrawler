@@ -1,0 +1,51 @@
+# Use the official image as a parent image.
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+
+# Set the working directory.
+WORKDIR /app
+
+# Copy csproj and restore as distinct layers.
+COPY *.sln .
+COPY src ./src
+COPY data ./data
+COPY drivers/chromedriver ./drivers/chromedriver
+RUN dotnet restore src/ArticlesCrawler.TuoiTreCrawler/ArticlesCrawler.TuoiTreCrawler.csproj
+
+# Copy everything else and build.
+WORKDIR /app/src/ArticlesCrawler.TuoiTreCrawler
+RUN dotnet publish -c Release -o out
+
+# Build runtime image.
+FROM mcr.microsoft.com/dotnet/runtime:6.0
+
+# Install a specific version of Chrome.
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    --no-install-recommends \
+    && curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update && apt-get install -y \
+    google-chrome-stable \
+    --no-install-recommends
+
+WORKDIR /app
+COPY --from=build-env /app/src/ArticlesCrawler.TuoiTreCrawler/out .
+COPY --from=build-env /app/src/ArticlesCrawler.TuoiTreCrawler/appsettings*.json ./
+COPY --from=build-env /app/data ./data
+COPY --from=build-env /app/drivers/chromedriver .
+
+# Give execute permissions to the chromedriver executable.
+RUN chmod +x .
+RUN chmod +x ./chromedriver
+
+# Set the ASPNETCORE_ENVIRONMENT environment variable.
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+# Give write permissions to the database directory.
+RUN chmod 777 /app/data
+
+# Run the app when the container launches.
+ENTRYPOINT ["dotnet", "ArticlesCrawler.TuoiTreCrawler.dll"]

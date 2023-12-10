@@ -20,8 +20,7 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
         private readonly IArticleService _articleService;
         private readonly IConfiguration _configuration;
         private readonly ILogger<MainCrawler> _logger;
-        private string strUrl;
-
+        private const string strUrl= "https://vnexpress.net/";
         public const string ConstSource = "vnexpress";
 
         public MainCrawler(IArticleService articleService, IConfiguration configuration, ILogger<MainCrawler> logger)
@@ -29,9 +28,12 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
             this._articleService = articleService;
             this._configuration = configuration;
             this._logger = logger;
-            this.strUrl = "https://vnexpress.net/";
         }
 
+        /// <summary>
+        /// Prepares the browser options for Chrome.
+        /// </summary>
+        /// <returns>The configured ChromeOptions object.</returns>
         private ChromeOptions PrepareBrowserOptions()
         {
             ChromeOptions chromeOptions = new ChromeOptions();
@@ -43,9 +45,14 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
             chromeOptions.AddArgument("--no-user-data-dir");
             chromeOptions.AddArgument("--no-sandbox"); // Needed when running ChromeDriver in a Docker container.
             chromeOptions.AddArgument("--disable-dev-shm-usage"); // Needed when running ChromeDriver in a Docker container.
+            chromeOptions.AddArgument("--disable-gpu");
             return chromeOptions;
         }
 
+        /// <summary>
+        /// Retrieves the list of categories from the VNExpress website.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the list of categories.</returns>
         public async Task<List<string>> GetCategories()
         {
             // Load the HTML document
@@ -59,15 +66,17 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
 
             // Extract list of submenu ids
             List<string> lsSubMenues = new List<string>();
+            
+            // Find all categories from the top menu
+            // Selects the first 'nav' element with a class of 'main-nav' from the HTML document
             var sectionNode = doc.DocumentNode.SelectSingleNode("//nav[@class='main-nav']");
-
             if (sectionNode != null)
             {
-                // Use XPath query to select nodes with data-medium attribute
+                // Selects all 'li' elements with a 'data-id' attribute from the 'nav' element
                 var nodes = sectionNode.SelectNodes(".//li[@data-id]");
                 if (nodes != null)
                 {
-                    // Iterate over the nodes and add id of the categiry
+                    // Iterate over the nodes and get id of the category
                     foreach (var node in nodes)
                     {
                         lsSubMenues.Add(node.Attributes["data-id"].Value);
@@ -83,7 +92,12 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
             return lsSubMenues;
         }
 
-        public List<ArticleData> GetArticlesInCategories(List<string> subMenuIds)
+        /// <summary>
+        /// Retrieves articles from multiple categories based on the provided subMenuIds.
+        /// </summary>
+        /// <param name="subMenuIds">The list of subMenuIds representing the categories.</param>
+        /// <returns>A list of ArticleData objects containing the retrieved articles.</returns>
+        public ConcurrentBag<ArticleData> GetArticlesInCategories(ConcurrentBag<string> subMenuIds)
         {
             // Initialize the list of articles to save article collected from multiple threads
             ConcurrentBag<ArticleData> lsArticles = new ConcurrentBag<ArticleData>();
@@ -120,31 +134,27 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                     // Load the HTML document
                     HtmlDocument doc = web.Load(formattedUrl);
 
-                    // Process the HTML document to get the articles
-                    // This depends on the structure of the HTML document
-                    // Here's an example of how you might do it
-                    var articleNodes = doc.DocumentNode.SelectNodes("//article");
+                    // Get the list of articles
+                    // Selects all 'article' elements with an 'a' element from the HTML document
+                    var articleNodes = doc.DocumentNode.SelectNodes("//article//a");
                     if (articleNodes == null || articleNodes.Count == 0)
                     {
                         // No more articles to process
                         break;
                     }
 
+                    // Iterate over the nodes and get the article metadata
                     foreach (var node in articleNodes)
                     {
-                        var linkNode = node.SelectSingleNode(".//a");
-                        if (linkNode != null)
+                        var article = new ArticleData
                         {
-                            var article = new ArticleData
-                            {
-                                Source = ConstSource,
-                                CategoryId = id,
-                                Href = linkNode.GetAttributeValue("href", string.Empty),
-                                Title = linkNode.GetAttributeValue("title", string.Empty)
-                            };
+                            Source = ConstSource,
+                            CategoryId = id,
+                            Href = node.GetAttributeValue("href", string.Empty),
+                            Title = node.GetAttributeValue("title", string.Empty)
+                        };
 
-                            lsArticles.Add(article);
-                        }
+                        lsArticles.Add(article);
                     }
 
                     // Increment the page number
@@ -154,9 +164,13 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                 _logger.LogInformation($"________ Articles: {lsArticles.Count}");
             });
 
-            return lsArticles.ToList();
+            return lsArticles;
         }
 
+        /// <summary>
+        /// Asynchronously gets the article metadata: published time, total comments, total likes.
+        /// </summary>
+        /// <param name="article">The article data.</param>
         public async Task GetArticleMetadata(ArticleData article)
         {
             _logger.LogInformation($"*****Exploring article: {article.Href}");
@@ -184,6 +198,7 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                     doc.LoadHtml(html);
 
                     // Get published time
+                    // Selects the first 'div' element with a class of 'header-content' from the HTML document
                     var dateNode = doc.DocumentNode.SelectSingleNode(".//div[contains(@class, 'header-content')]//span[contains(@class, 'date')]");
                     if (dateNode != null)
                     {
@@ -192,13 +207,17 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
                         _logger.LogInformation($"strDate: {strDate}, Likes: {article.PublishedTime}");
                     }
 
-                    // Process the HTML document to get the comments
+                    // Get all the comment nodes
+                    // Selects all 'div' elements with a class containing 'content-comment' that are descendants of a 'div' with id 'list_comment' from the HTML document
                     var commentNodes = doc.DocumentNode.SelectNodes("//div[@id='list_comment']//div[contains(@class, 'content-comment')]");
                     if (commentNodes != null)
                     {
                         foreach (var node in commentNodes)
                         {
+                            // Get the content and likes of the comment
+                            // Selects the first 'p' element with a class containing 'full_content' that is a descendant of the current node
                             var contentNode = node.SelectSingleNode(".//p[contains(@class, 'full_content')]");
+                            // Selects the first 'div' element with a class containing 'reactions-total' that is a descendant of the current node
                             var likesNode = node.SelectSingleNode(".//div[contains(@class, 'reactions-total')]//a");
 
                             if (contentNode != null && likesNode != null)
@@ -242,24 +261,28 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
             }
         }
 
-        public async Task<List<ArticleData>> CrawlAllArticles()
+        /// <summary>
+        /// Asynchronously crawls all articles.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
+        public async Task CrawlAllArticles()
         {
-            // Get the list of IDs
+            // Get the list of categories
             List<string> idList = await GetCategories();
 
-            // Get the articles for these IDs
-            List<ArticleData> allArticles = GetArticlesInCategories(idList);
+            // Get the articles for these categories
+            ConcurrentBag<ArticleData> allArticles = GetArticlesInCategories(new ConcurrentBag<string>(idList));
 
-            // Populate the comments for each article parallelly
+            // Populate the metadata for each article parallelly
             int maxDegreeOfParallelism = int.Parse(_configuration.GetSection("CrawlerMaxDegreeOfParallelism").Value);
             ParallelOptions options = new ParallelOptions { MaxDegreeOfParallelism = maxDegreeOfParallelism }; // Change this to your desired value
             Parallel.ForEach(allArticles, options, async article =>
             {
+                // Get the article metadata
                 await GetArticleMetadata(article);
+                // Save the article
                 await SaveArticle(article);
             });
-
-            return allArticles;
         }
 
         public async Task SaveArticle(ArticleData article)
@@ -267,6 +290,10 @@ namespace ArticlesCrawler.VNExpressCrawler.Service
             await _articleService.SaveArticle(article);
         }
 
+        /// <summary>
+        /// Runs the crawler continuously, crawling all articles and delaying between each crawl.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task Run()
         {
             while (true)
