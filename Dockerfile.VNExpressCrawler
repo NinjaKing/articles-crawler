@@ -37,6 +37,9 @@ COPY --from=build-env /app/src/ArticlesCrawler.VNExpressCrawler/appsettings*.jso
 COPY --from=build-env /app/data ./data
 COPY --from=build-env /app/drivers .
 
+# Give execute permissions to the chromedriver executable.
+RUN chmod +x ./chromedriver
+
 # Set the ASPNETCORE_ENVIRONMENT environment variable.
 ENV ASPNETCORE_ENVIRONMENT=Production
 
