@@ -13,6 +13,8 @@ services:
     volumes:
       - db-data:/app/data
   api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     build: 
       context: .
       dockerfile: Dockerfile.PublicApi
