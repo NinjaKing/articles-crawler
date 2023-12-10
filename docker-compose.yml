@@ -1,7 +1,18 @@
 version: '3.8'
 services:
-  vnexpresscrawler:
-    image: vnexpresscrawler:latest
-    build:
-      context: ./src/ArticlesCrawler.VNExpressCrawler
-      dockerfile: Dockerfile
+  vnexpress-crawler:
+    build: 
+      context: .
+      dockerfile: Dockerfile.VNExpressCrawler
+    volumes:
+      - db-data:/app/data
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile.PublicApi
+    volumes:
+      - db-data:/app/data
+    ports:
+      - "8000:80"
+volumes:
+  db-data:
