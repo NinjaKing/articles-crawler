@@ -6,11 +6,9 @@ WORKDIR /app
 
 # Copy csproj and restore as distinct layers.
 COPY *.sln .
-# COPY src/ArticlesCrawler.VNExpressCrawler/*.csproj ./src/ArticlesCrawler.VNExpressCrawler/
-# COPY src/ArticlesCrawler.Core/*.csproj ./src/ArticlesCrawler.Core/
-# COPY src/ArticlesCrawler.Infrastructure/*.csproj ./src/ArticlesCrawler.Infrastructure/
 COPY src ./src
 COPY data ./data
+COPY drivers ./drivers
 RUN dotnet restore src/ArticlesCrawler.VNExpressCrawler/ArticlesCrawler.VNExpressCrawler.csproj
 
 # Copy everything else and build.
