@@ -5,19 +5,21 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers.
-COPY ../ArticlesCrawler.VNExpressCrawler ./ArticlesCrawler.VNExpressCrawler
-COPY ../ArticlesCrawler.Core ./ArticlesCrawler.Core
-COPY ../ArticlesCrawler.Infrastructure ./ArticlesCrawler.Infrastructure
-WORKDIR /app/ArticlesCrawler.VNExpressCrawler
+COPY . .
+# COPY src/ArticlesCrawler.VNExpressCrawler ./src/ArticlesCrawler.VNExpressCrawler
+# COPY src/ArticlesCrawler.Core ./ArticlesCrawler.Core
+# COPY src/ArticlesCrawler.Infrastructure ./ArticlesCrawler.Infrastructure
+# WORKDIR /app/ArticlesCrawler.VNExpressCrawler
 RUN dotnet restore
 
 # Copy everything else and build.
+WORKDIR /app/src/ArticlesCrawler.VNExpressCrawler
 RUN dotnet publish -c Release -o out
 
 # Build runtime image.
 FROM mcr.microsoft.com/dotnet/runtime:6.0
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build-env /app/src/ArticlesCrawler.VNExpressCrawler/out .
 
 # Run the app when the container launches.
 ENTRYPOINT ["dotnet", "ArticlesCrawler.VNExpressCrawler.dll"]
