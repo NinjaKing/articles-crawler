@@ -58,7 +58,8 @@ function fetchAndDisplayArticles(tabId) {
             const titleElement = document.createElement('h2');
             const titleLink = document.createElement('a');
             titleLink.href = article.href;
-            titleLink.textContent = article.title;
+            // set title if not null
+            titleLink.textContent = article.title ? article.title : article.href;
             titleLink.target = '_blank'; // This makes the link open in a new tab
             titleElement.appendChild(titleLink);
 
