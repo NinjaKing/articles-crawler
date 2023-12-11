@@ -426,6 +426,8 @@ namespace ArticlesCrawler.TuoiTreCrawler.Service
 
         public async Task CrawlAllArticles()
         {
+            ArticleCollection = new Dictionary<string, ArticleData>();
+
             // Get the list of categories
             List<string> categories = GetCategories();
 
