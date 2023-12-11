@@ -30,7 +30,7 @@ To run the whole solution, follow these steps:
 2. Navigate to the solution directory.
 3. Install Docker.
 4. Build and Run the Docker containers by running `docker-compose up`.
-5. Config the API url inside `arc/Web/app.js` file and run `arc/Web/index.html` to get the top articles.
+5. Open `src/Web/index.html` to get the top articles.
 
 ## Demo
 

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticlesCrawler.VNExpressCr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticlesCrawler.TuoiTreCrawler", "src\ArticlesCrawler.TuoiTreCrawler\ArticlesCrawler.TuoiTreCrawler.csproj", "{B02030F6-283E-4767-B01F-8EF66C0FE963}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticlesCrawler.TuoiTreCrawler.Tests", "tests\ArticlesCrawler.TuoiTreCrawler.Tests\ArticlesCrawler.TuoiTreCrawler.Tests.csproj", "{756110DC-A2D9-4C99-8EE8-08F869B368CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{B02030F6-283E-4767-B01F-8EF66C0FE963}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B02030F6-283E-4767-B01F-8EF66C0FE963}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B02030F6-283E-4767-B01F-8EF66C0FE963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{756110DC-A2D9-4C99-8EE8-08F869B368CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{756110DC-A2D9-4C99-8EE8-08F869B368CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{756110DC-A2D9-4C99-8EE8-08F869B368CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{756110DC-A2D9-4C99-8EE8-08F869B368CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{87667BCD-88FC-49C3-A7AE-D17C0177D1E8} = {400E99CF-E553-44FD-97AD-29E388CFBA72}
@@ -65,5 +71,6 @@ Global
 		{089D16FF-BAF8-4E8B-ADD5-A4B5D464DEE3} = {400E99CF-E553-44FD-97AD-29E388CFBA72}
 		{A37EA53E-50EF-4778-9284-A6090EFD060A} = {072C8C00-D849-45C3-B728-4DEA56FA863D}
 		{B02030F6-283E-4767-B01F-8EF66C0FE963} = {400E99CF-E553-44FD-97AD-29E388CFBA72}
+		{756110DC-A2D9-4C99-8EE8-08F869B368CD} = {072C8C00-D849-45C3-B728-4DEA56FA863D}
 	EndGlobalSection
 EndGlobal

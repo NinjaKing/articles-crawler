@@ -5,6 +5,7 @@ using ArticlesCrawler.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using ArticlesCrawler.Core.Entities;
+using System.Collections.Concurrent;
 
 namespace VNExpressCrawler.Tests
 {
@@ -18,29 +19,6 @@ namespace VNExpressCrawler.Tests
         [SetUp]
         public void Setup()
         {
-            // Build the IConfiguration object
-            // var configuration = new ConfigurationBuilder()
-            //     .SetBasePath(Directory.GetCurrentDirectory())
-            //     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            //     .Build();
-
-            // var serviceCollection = new ServiceCollection();
-            // serviceCollection.AddSingleton<IConfiguration>(configuration);
-            // Register your services
-            // serviceCollection.AddInfrastructure();
-            // serviceCollection.AddSingleton<MainCrawler>();
-            // serviceCollection.AddLogging(builder => builder.AddConsole());
-            
-            // Build a ServiceProvider from the ServiceCollection
-            // var serviceProvider = serviceCollection.BuildServiceProvider();
-            
-            // // Ensure the database is created.
-            // using (var scope = serviceProvider.CreateScope())
-            // {
-            //     var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
-            //     context.Database.EnsureCreated();
-            // }
-            
             _mockArticleService = new Mock<IArticleService>();
             _mockConfiguration = new Mock<IConfiguration>();
             _mockLogger = new Mock<ILogger<MainCrawler>>();
@@ -78,18 +56,13 @@ namespace VNExpressCrawler.Tests
             Assert.IsTrue(mockArticleData.TotalLikes > 0);
         }
 
-        // [Test]
-        // public async Task TestCrawlAllArticles()
-        // {
-        //     // Arrange
-        //     // Any setup specific to this test
+        [Test]
+        public void TestGetArticlesInCategories()
+        {
+            var categories = new ConcurrentBag<string> {"1001002"}; // Replace with valid categories
+            var articles = _crawler.GetArticlesInCategories(categories);
 
-        //     // Act
-        //     var result = await _crawler.CrawlAllArticles();
-
-        //     // Assert
-        //     Assert.IsNotNull(result);
-        //     // Add more assertions based on your method's expected behavior
-        // }
+            Assert.IsNotEmpty(articles);
+        }
     }
 }
